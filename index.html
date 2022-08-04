@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Open Source Challenge</title>
+    
+  </head>
+  <body>
+    <h1>Open Source Challenge</h1>
+    <div class="nums"></div>
+    <br />
+    <div class="targets">
+      <select id="target">
+        <option value="7">Target: 7</option>
+        <option value="16">Target: 16</option>
+        <option value="20">Target: 20</option>
+        <option value="18">Target: 18</option>
+      </select>
+    </div>
+    <br />
+   <div class="output"></div>
+    
+    
+    
+    <script>
+      const nums = [3,4,8,12,15];
+      const outputArr = [];
+      const len = nums.length
+      
+      
+      const numsArr = document.querySelector('.nums');
+      const output = document.querySelector('.output')
+      
+  console.log(nums)
+      numsArr.innerText += "nums = [";
+      for(let i=0;i<len;i++){
+      numsArr.innerText += nums[i] + ", "
+      }
+      numsArr.innerText += "]";
+  
+  
+      
+      const choice = document.querySelector('select');
+      choice.addEventListener('change',checkOption);
+      
+      let target = choice.value;
+      checker();
+      
+      function checkOption(){
+        outputArr.length = 0;
+        target = choice.value;
+        output.innerText = "";
+        checker();
+      }
+      
+  function checker(){
+      for(let i=0; i<nums.length;i++){
+        for(let j=i+1; j<nums.length;j++){
+          if(nums[i]+nums[j] == target){
+            outputArr.push(nums[i]);
+            outputArr.push(nums[j]);
+            break;
+          }
+        }
+      }
+       console.log(outputArr);
+       let len1 = outputArr.length
+       
+       output.innerText += "Output = [";
+      for(let i=0;i<len1;i++){
+      output.innerText += outputArr[i] + ", "
+      }
+      output.innerText += "]";
+  }
+  
+    </script>
+  </body>
+</html>
